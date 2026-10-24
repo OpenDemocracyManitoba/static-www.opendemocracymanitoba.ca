@@ -1,0 +1,128 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font-family: Georgia, "Bitstream Charter", serif; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-family: Georgia, "Bitstream Charter", serif; }
+
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  color: #222;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  color: #3b59bb;
+  text-decoration: none; }
+  a img {
+    border: none; }
+
+p {
+  margin-bottom: 1em;
+  }
+
+a:hover {
+  text-decoration: underline; }
+
+header {
+    margin-bottom: 4em;
+}
+
+header h1 {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  font-size: 3.5em;
+  color: #222;
+  font-family: Georgia, "Bitstream Charter", serif;
+}
+
+header img {
+    margin-top: 2em;
+    display: block;
+    width: 250px;
+}
+
+header p {
+  font-style: italic;
+  color: #393939;
+}
+
+.row section {
+  margin-bottom: 3em;
+}
+
+section h2 {
+  color: #202040;
+  font-family: Georgia, "Bitstream Charter", serif;
+  margin-bottom: 0.5em;
+}
+
+section p {
+  color: #202040;
+}
+
+section {
+  margin-bottom: 2em;
+}
+
+section.wpg-elected,
+section.wpg-election,
+section.mb-election {
+  text-align: center;
+}
+
+section.wpg-elected h4,
+section.wpg-election h4,
+section.mb-election h4 {
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+}
+
+section.details {
+    margin-top: 3em;
+}
+
+div.row {
+  margin-top: 4em;
+}
+
+ul li {
+    margin-bottom: 1em;
+    list-style: none;
+    margin-left: -2.5em;
+}
+
+li:before {
+    content: "\002022";
+    color: #aaa;
+    padding-right: 0.5em;
+}
+
+section.details img {
+  margin-top: 3em;
+  margin-bottom: 1em;
+  width: 200px;
+}
+
+.dim {
+  color: #333;
+  font-size: 0.9em;
+}
+
+@media (max-width: 410px) { 
+  span.link-tech {
+    display: none;
+  }
+}
+

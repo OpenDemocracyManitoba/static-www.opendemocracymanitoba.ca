@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Transformer</title>
+<!-- Import Tailwind CSS from CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  /* Additional CSS for custom shapes */
+  .triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  .circle {
+    border-radius: 50%;
+  }
+  .star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+</style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+<div class="space-y-8">
+  <!-- Slider Container -->
+  <div class="flex items-center space-x-4">
+    <!-- Scale Slider -->
+    <input type="range" min="0.5" max="3" value="1" step="0.1" id="scale-slider" 
+           class="slider w-64" />
+    <span>Scale</span>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <!-- Rotation Slider -->
+    <input type="range" min="0" max="360" value="0" step="1" id="rotation-slider" 
+           class="slider w-64" />
+    <span>Rotation</span>
+  </div>
+
+  <!-- Shape Selector Dropdown -->
+  <select id="shape-selector" class="block w-64 p-2 border border-gray-300 bg-white">
+    <option value="square">Square</option>
+    <option value="circle">Circle</option>
+    <option value="triangle">Triangle</option>
+    <option value="star">Star</option>
+  </select>
+
+  <!-- Color Picker -->
+  <input type="color" id="color-picker" value="#0000FF" class="block w-64 p-2" />
+
+  <!-- Shape -->
+  <div id="shape" class="w-32 h-32 bg-blue-500 mt-8"></div>
+</div>
+
+<script>
+  const scaleSlider = document.getElementById('scale-slider');
+  const rotationSlider = document.getElementById('rotation-slider');
+  const shapeSelector = document.getElementById('shape-selector');
+  const colorPicker = document.getElementById('color-picker');
+  const shape = document.getElementById('shape');
+
+  function updateShape() {
+    shape.className = ''; // Reset classes
+    shape.classList.add('w-32', 'h-32', 'mt-8', shapeSelector.value);
+    shape.style.transform = `scale(${scaleSlider.value}) rotate(${rotationSlider.value}deg)`;
+    shape.style.backgroundColor = colorPicker.value;
+  }
+
+  scaleSlider.addEventListener('input', updateShape);
+  rotationSlider.addEventListener('input', updateShape);
+  shapeSelector.addEventListener('change', updateShape);
+  colorPicker.addEventListener('input', updateShape);
+
+  // Initialize the shape style
+  updateShape();
+</script>
+</body>
+</html>

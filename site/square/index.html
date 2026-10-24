@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Square Transformer</title>
+<!-- Import Tailwind CSS from CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  /* Additional CSS if needed */
+</style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+<div class="space-y-8">
+  <!-- Scale Slider -->
+  <label class="block">
+    <span class="text-gray-700">Scale</span>
+    <input type="range" min="0.5" max="3" value="1" step="0.1" id="scale-slider" 
+           class="slider w-64" />
+  </label>
+
+  <!-- Rotation Slider -->
+  <label class="block">
+    <span class="text-gray-700">Rotation</span>
+    <input type="range" min="0" max="360" value="0" step="1" id="rotation-slider" 
+           class="slider w-64" />
+  </label>
+
+  <!-- Blue Square -->
+  <div id="blue-square" class="w-32 h-32 bg-blue-500"></div>
+</div>
+
+<script>
+  // JavaScript to handle slider interactions
+  const scaleSlider = document.getElementById('scale-slider');
+  const rotationSlider = document.getElementById('rotation-slider');
+  const blueSquare = document.getElementById('blue-square');
+
+  scaleSlider.addEventListener('input', function() {
+    blueSquare.style.transform = `scale(${this.value}) rotate(${rotationSlider.value}deg)`;
+  });
+
+  rotationSlider.addEventListener('input', function() {
+    blueSquare.style.transform = `rotate(${this.value}deg) scale(${scaleSlider.value})`;
+  });
+</script>
+</body>
+</html>
