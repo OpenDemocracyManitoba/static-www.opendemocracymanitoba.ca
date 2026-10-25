@@ -30,6 +30,19 @@ In Phase B of the olddroplet migration (R4, 2026-10-24), the stylesheets every p
 
 Tailwind CSS and Bootstrap are under the MIT License. Other third-party resources were left as they were.
 
+## Hosting
+
+Served from **Cloudflare Workers static assets** (Phase B of the olddroplet migration). `wrangler.jsonc`, `.gitignore`, `site/404.html` and this section are written by `hosting.py` (`python3 -I hosting.py www.opendemocracymanitoba.ca <preview|routed|final>`).
+
+* **Worker:** `static-www-opendemocracymanitoba-ca`, account `Stungeye@gmail.com's Account`.
+* **Deploy:** `npx wrangler@4.148.0 deploy` from the repo root. Only `site/` is uploaded.
+* **Routes:** none yet (preview only).
+* **workers.dev:** https://static-www-opendemocracymanitoba-ca.stungeye.workers.dev. Per-version preview URLs are off (`preview_urls: false`).
+* **Serving:** `html_handling: auto-trailing-slash` (`/foo` serves `foo.html`, `/foo/` serves `foo/index.html`; the other forms 307 to those) and `not_found_handling: 404-page` (`site/404.html`, a minimal page added in Phase B).
+* **http → https:** the zone setting "Always Use HTTPS" (301 at Cloudflare's edge).
+* **Redirect rules:** the `opendemocracymanitoba.ca` zone has a Single Redirect rule: `http.host eq "opendemocracymanitoba.ca"` → `concat("https://www.opendemocracymanitoba.ca", http.request.uri.path)`, query string kept, 301 (created in the dashboard at cutover).
+* **Rollback:** while the old origin is up, remove `routes` from `wrangler.jsonc` and deploy (or delete the route in the dashboard); the origin serves again at once. A bad version can be rolled back with `npx wrangler@4.148.0 rollback`.
+
 ## Secret scan
 
 The Phase A §7.2 scan (no `.git`, `.env`, `.ftpconfig`, `.htpasswd`, `debug.log`, `*.php`, `*.sql*`; no `DB_PASSWORD`/`AUTH_KEY`/private keys/`phpinfo()`/`mysql_connect` in any text file) found nothing.
