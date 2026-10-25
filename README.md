@@ -30,6 +30,13 @@ In Phase B of the olddroplet migration (R4, 2026-10-24), the stylesheets every p
 
 Tailwind CSS and Bootstrap are under the MIT License. Other third-party resources were left as they were.
 
+## Unrelated files removed
+
+Owner decision (Phase B, 2026-10-25): files that aren't part of the site were removed by `python3 -I drop_unrelated.py www.opendemocracymanitoba.ca --apply` (5 files). No remaining file references them.
+
+* `square/` (4 files): teaching demos (shape transformer, credit card validator) unrelated to ODM, linked from nowhere else
+* `_ext/cdn.jsdelivr.net/` (1 file): the Tailwind CSS mirror (Phase B R4), used only by `square/`
+
 ## Hosting
 
 Served from **Cloudflare Workers static assets** (Phase B of the olddroplet migration). `wrangler.jsonc`, `.gitignore`, `site/404.html` and this section are written by `hosting.py` (`python3 -I hosting.py www.opendemocracymanitoba.ca <preview|routed|final>`).
