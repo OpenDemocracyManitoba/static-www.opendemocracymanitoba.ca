@@ -8,5 +8,6 @@
     "directory": "./site",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
-  }
+  },
+  "routes": [{ "pattern": "www.opendemocracymanitoba.ca/*", "zone_name": "opendemocracymanitoba.ca" }]
 }
